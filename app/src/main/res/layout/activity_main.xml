@@ -21,22 +21,6 @@
         style="@style/TextLabelStyle" />
 
 
-    <TextView
-        android:id="@+id/titleTv"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/welcomeTv"
-        android:textAlignment="center"
-        style="@style/TextLabelStyle"
-        tools:text="Title 1"/>
-
-    <TextView
-        android:id="@+id/descriptionTv"
-        android:layout_marginTop="8dp"
-        android:layout_below="@id/titleTv"
-        android:textAlignment="center"
-        style="@style/TextLabelStyle"
-        tools:text="Description 1"/>
-
     <Button
         android:id="@+id/addBtn"
         android:text="@string/plus"

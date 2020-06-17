@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
             var description=""
             list?.map { title+= it.title+" - " }
             list?.map { description+= it.description+" - " }
-            titleTv.text = title
-            descriptionTv.text = description
+            //titleTv.text = title
+            //descriptionTv.text = description
 
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

@@ -17,7 +17,6 @@ class EntriesActivity : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = linearLayoutManager
 
-
         val bundle = intent.extras
 
         val title = bundle!!.getString("title")

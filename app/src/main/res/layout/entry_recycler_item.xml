@@ -19,7 +19,7 @@
         style="@style/DescriptionStyle"
         android:layout_width="wrap_content"
         android:maxLines="1"
-        android:maxLength="10"
+        android:maxLength="50"
         android:layout_height="wrap_content"
         tools:text="Description"/>
 

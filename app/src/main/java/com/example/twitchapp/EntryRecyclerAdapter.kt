@@ -1,22 +1,29 @@
 package com.example.twitchapp
 
-import android.util.Log
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.*
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import kotlinx.android.synthetic.main.entry_recycler_item.view.*
 import room.Entry
 
-class EntryRecyclerAdapter : Adapter<EntryRecyclerAdapter.EntryHolder>() {
-
-
-    private lateinit var entries: ArrayList<Entry>
-
+class EntryRecyclerAdapter(
+    private val entries: ArrayList<Entry>,
+    val callback: Callback,
+    val context: Context
+) :
+    Adapter<EntryRecyclerAdapter.EntryHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): EntryRecyclerAdapter.EntryHolder {
-        TODO("Not yet implemented")
+        return EntryHolder(
+            LayoutInflater.from(context).inflate(R.layout.entry_recycler_item, parent, false)
+        )
     }
 
     override fun getItemCount(): Int {
@@ -24,21 +31,27 @@ class EntryRecyclerAdapter : Adapter<EntryRecyclerAdapter.EntryHolder>() {
     }
 
     override fun onBindViewHolder(holder: EntryRecyclerAdapter.EntryHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(entries[position])
     }
 
-    inner class EntryHolder(itemView: View) : ViewHolder(itemView), View.OnClickListener {
+    inner class EntryHolder(itemView: View) : ViewHolder(itemView) {
 
-        private var view: View = itemView
-        private var entry: Entry? = null
+        private val titleTv = itemView.titleTv
+        private val descriptionTv = itemView.descriptionTv
 
-        init {
-            itemView.setOnClickListener(this)
+        fun bind(entry: Entry) {
+            titleTv.text = entry.title
+            descriptionTv.text = entry.description
+            itemView.setOnClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION)
+                    callback.onItemClicked(entries[adapterPosition])
+            }
         }
 
-        override fun onClick(p0: View?) {
-            Log.d("Item clicked", "yes yes")
-        }
 
+    }
+
+    interface Callback {
+        fun onItemClicked(entry: Entry)
     }
 }
