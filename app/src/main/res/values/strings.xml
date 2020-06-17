@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">The Voices Inside My Head</string>
+    <string name="welcome_to_my_thoughts">Welcome to The Voices Inside My Head</string>
+    <string name="plus">+</string>
+    <string name="title">Title</string>
+    <string name="entry_title">Entry title</string>
+    <string name="description">description</string>
+    <string name="save">Save</string>
+</resources>
