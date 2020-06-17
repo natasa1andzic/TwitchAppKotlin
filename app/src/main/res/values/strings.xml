@@ -6,4 +6,7 @@
     <string name="entry_title">Entry title</string>
     <string name="description">description</string>
     <string name="save">Save</string>
+    <string name="splash_screen_image">Splash screen image</string>
+    <string name="about">About</string>
+    <string name="hi_bye">Hi! Bye!</string>
 </resources>

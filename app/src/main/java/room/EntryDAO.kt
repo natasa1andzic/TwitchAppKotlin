@@ -1,20 +1,21 @@
 package room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface EntryDAO {
 
     @Query("SELECT * FROM entry")
-    fun getAll(): List<Entry>
+    fun getAll(): LiveData<List<Entry>>
 
     @Query("SELECT * FROM entry WHERE uid IN (:entryIds)")
-    fun loadAllByIds(entryIds: IntArray): List<Entry>
+    fun loadAllByIds(entryIds: IntArray): LiveData<List<Entry>>
 
     @Query(
         "SELECT * FROM entry WHERE title LIKE '%' || :title || '%' LIMIT 1"
     )
-    fun findByTitle(title: String): Entry
+    fun findByTitle(title: String): LiveData<Entry>
 
     @Insert
     fun insert(entry: Entry)

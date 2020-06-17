@@ -2,11 +2,12 @@ package com.example.twitchapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import room.AppDatabase
@@ -34,21 +35,29 @@ class MainActivity : AppCompatActivity() {
             db = AppDatabase.getAppDataBase(context = this)
             entryDAO = db?.entryDAO()
 
-            val entry1 = Entry(title="Day 1", description = "I have successfully infiltrated into...", imagePath = null)
-            val entry2 = Entry(title="Day 2", description = "They have discovered who I really am...", imagePath = null)
+            val entry1 = Entry(
+                title = "Day 1",
+                description = "I have successfully infiltrated into...",
+                imagePath = null
+            )
+            val entry2 = Entry(
+                title = "Day 2",
+                description = "They have discovered who I really am...",
+                imagePath = null
+            )
 
 
-            with(entryDAO){
+            with(entryDAO) {
                 this?.insert(entry1)
                 this?.insert(entry2)
             }
             db?.entryDAO()?.getAll()
-        }.doOnNext { list ->
+        }.doOnNext {
             var title = ""
-            var description=""
-            list?.map { title+= it.title+" - " }
-            list?.map { description+= it.description+" - " }
-            //titleTv.text = title
+            var description = ""
+//            list?.map { title+= it.title+" - " }
+//            list?.map { description+= it.description+" - " }
+//            //titleTv.text = title
             //descriptionTv.text = description
 
         }.subscribeOn(Schedulers.io())
@@ -56,4 +65,20 @@ class MainActivity : AppCompatActivity() {
             .subscribe()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        return when (item!!.itemId) {
+            R.id.about -> {
+                startActivity(Intent(this, AboutActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
+

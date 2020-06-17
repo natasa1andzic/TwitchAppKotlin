@@ -1,4 +1,4 @@
-package com.example.twitchapp
+package adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.twitchapp.R
 import kotlinx.android.synthetic.main.entry_recycler_item.view.*
 import room.Entry
 
@@ -20,7 +21,7 @@ class EntryRecyclerAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): EntryRecyclerAdapter.EntryHolder {
+    ): EntryHolder {
         return EntryHolder(
             LayoutInflater.from(context).inflate(R.layout.entry_recycler_item, parent, false)
         )
@@ -30,7 +31,7 @@ class EntryRecyclerAdapter(
         return entries.size
     }
 
-    override fun onBindViewHolder(holder: EntryRecyclerAdapter.EntryHolder, position: Int) {
+    override fun onBindViewHolder(holder: EntryHolder, position: Int) {
         holder.bind(entries[position])
     }
 
@@ -47,8 +48,6 @@ class EntryRecyclerAdapter(
                     callback.onItemClicked(entries[adapterPosition])
             }
         }
-
-
     }
 
     interface Callback {

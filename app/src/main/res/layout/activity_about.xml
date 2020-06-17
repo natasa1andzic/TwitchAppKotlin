@@ -7,6 +7,9 @@
     android:background="@color/backgroundColor"
     tools:context=".MainActivity">
 
+
+    <!--back button here-->
+
     <include
         layout="@layout/toolbar"
         android:layout_width="match_parent"
@@ -14,23 +17,19 @@
 
     <TextView
         android:id="@+id/welcomeTv"
-        android:text="@string/welcome_to_my_thoughts"
+        android:text="@string/hi_bye"
         android:textAlignment="center"
         android:layout_centerInParent="true"
         style="@style/TextLabelStyle" />
 
-    <Button
-        android:id="@+id/addBtn"
-        android:text="@string/plus"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/estTv"
+        android:text="est. 2020"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp" />
+        android:textAlignment="center"
+        android:layout_centerInParent="true"
+        style="@style/TextLabelStyle" />
+
 
 
 </RelativeLayout>
